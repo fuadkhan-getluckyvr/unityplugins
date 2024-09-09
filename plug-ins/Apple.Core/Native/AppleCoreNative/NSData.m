@@ -30,3 +30,16 @@ const void * NSData_GetBytes(void * nsDataPtr, void (* exceptionCallback)(void *
     }
     return 0;
 }
+
+// Fuad Added this 2024/09/09
+const void * NSData_CreateEmpty(void (*exceptionCallback)(void * nsExceptionPtr)) {
+    @try {
+        NSData *data = [NSData data];
+        return (__bridge_retained const void *)data;
+    }
+    @catch (NSException * e) {
+        exceptionCallback((void *)CFBridgingRetain(e));
+    }
+    return NULL;
+}
+// Fuad Added this 2024/09/09

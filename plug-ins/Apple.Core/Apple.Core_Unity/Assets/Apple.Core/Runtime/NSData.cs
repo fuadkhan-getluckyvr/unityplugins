@@ -41,7 +41,18 @@ namespace Apple.Core.Runtime
                 return bytes;
             }
         }
-
+// Fuad Added this 2024/09/09
+        /// <summary>
+        /// Creates an empty NSData instance using a native method.
+        /// </summary>
+        /// <returns>Pointer to the newly created empty NSData object.</returns>
+        private static IntPtr CreateEmptyNSData()
+        {
+            // Replace this with the actual method to create an empty NSData object
+            return Interop.NSData_CreateEmpty(NSException.ThrowOnExceptionCallback);
+        }
+// Fuad Added this 2024/09/09
+        
         private static class Interop
         {
             [DllImport(InteropUtility.DLLName)] public static extern UInt64 NSData_GetLength(IntPtr nsDataPtr, NSExceptionCallback onException);
